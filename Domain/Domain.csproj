@@ -8,11 +8,12 @@
     <Folder Include="Operations\CartOperations\" />
     <Folder Include="Operations\ItemOperations\" />
     <Folder Include="Operations\SubCategoryOperations\" />
-    <Folder Include="Operations\UserOperations\" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="BCrypt.Net-Core" Version="1.6.0" />
     <PackageReference Include="FluentValidation" Version="8.4.0" />
+    <PackageReference Include="Twilio" Version="5.31.2" />
   </ItemGroup>
 
   <ItemGroup>

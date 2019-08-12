@@ -26,14 +26,11 @@ public class Repository<Entity>  where Entity : class,IEntity, new()
             var result = Context.Set<Entity>().AsNoTracking().Where(entity => entity.Id == Id).FirstOrDefault();
             return result;
         }
-
         public IQueryable<Entity> GetAll()
         {
             IQueryable<Entity> dbQuery = Context.Set<Entity>();
             return dbQuery.AsNoTracking();
         }
-
-
         public IQueryable<Entity> Find(Expression<Func<Entity, bool>> predicate, params Expression<Func<Entity, object>>[] navigationProperties)
         {
             IQueryable<Entity> dbQuery = Context.Set<Entity>();
@@ -43,7 +40,6 @@ public class Repository<Entity>  where Entity : class,IEntity, new()
 
             return dbQuery.Where(predicate);
         }
-
         public Entity SingleOrDefault(Expression<Func<Entity, bool>> predicate)
         {
             IQueryable<Entity> dbQuery = Context.Set<Entity>();
@@ -110,7 +106,9 @@ public class Repository<Entity>  where Entity : class,IEntity, new()
             return entity;
         }
 
-        public void SaveChanges()
+    public bool Any(Expression<Func<Entity, bool>> predicate) => Context.Set<Entity>().Any(predicate);
+
+    public void SaveChanges()
         {
             Context.SaveChanges();
         }

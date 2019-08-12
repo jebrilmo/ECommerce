@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Twilio;
 
 namespace Api
 {
@@ -24,6 +25,8 @@ namespace Api
                 .AddJsonFile("appsettings.json")
                 .AddEnvironmentVariables()
                 .Build();
+
+            TwilioClient.Init(Configuration["MobileProviderAccountId"], Configuration["MobileProviderToken"]);
         }
 
         public void ConfigureServices(IServiceCollection services)
